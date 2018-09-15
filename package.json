@@ -1,0 +1,31 @@
+{
+  "name": "fluvius-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ilyahas/fluvius-test.git"
+  },
+  "author": "Ilya Kot",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ilyahas/fluvius-test/issues"
+  },
+  "homepage": "https://github.com/Ilyahas/fluvius-test#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "helmet": "^3.13.0",
+    "mongoose": "^5.2.14",
+    "morgan": "^1.9.1",
+    "session": "^0.1.0"
+  }
+}
