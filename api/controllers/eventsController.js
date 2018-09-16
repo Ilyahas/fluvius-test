@@ -2,8 +2,12 @@ const mongoose = require('mongoose');
 const Event = require('../models/Event');
 
 function getEvents(req, res, next) {
+    const perPage = 10,
+        page = Math.max(0, req.param('page'));
     Event.find()
         .select('_id name date')
+        .limit(perPage)
+        .skip(perPage * page)
         .exec()
         .then(docs => {
             if(docs.length > 0) {
@@ -45,8 +49,7 @@ function addEvents(req, res, next) {
         date: eventData.date
     });
     event.save().then(result => {
-        console.log(result);
-        res.status(200).json(result);
+        res.status(200).json({id: result._id});
     }).catch(err => {
         console.log(err);
         res.status(500).json({error: err});
@@ -56,7 +59,6 @@ function addEvents(req, res, next) {
 function updateEventById(req, res, next) {
     const eventId = req.params.eventId;
     const updateOps = {};
-    console.log(req.body);
     for (const ops of req.body) {
         updateOps[ops.propName] = ops.value;
     }

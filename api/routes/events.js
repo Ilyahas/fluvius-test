@@ -1,16 +1,17 @@
 const express = require('express');
 const eventsController = require('../controllers/eventsController');
+const checkAuth = require('../middleware/checkAuth');
 
 const router = express.Router();
 
-router.get('/', eventsController.getEvents);
+router.get('/page/:page', checkAuth, eventsController.getEvents);
 
-router.get('/:eventId', eventsController.getEventById);
+router.get('/:eventId', checkAuth, eventsController.getEventById);
 
-router.post('/', eventsController.addEvents);
+router.post('/', checkAuth, eventsController.addEvents);
 
-router.patch('/:eventId', eventsController.updateEventById);
+router.patch('/:eventId', checkAuth, eventsController.updateEventById);
 
-router.delete('/:eventId', eventsController.deleteEventById);
+router.delete('/:eventId', checkAuth, eventsController.deleteEventById);
 
 module.exports = router;
